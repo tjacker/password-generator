@@ -1,0 +1,264 @@
+:root {
+    --primary-barkground: #edfdf5;
+    --secondary-background: #1f2937;
+    --primary-color: #111827;
+    --secondary-color: #11b981;
+    --divider-background: #d1d5db;
+    --btn-background: #029669;
+    --btn-background-hover: #057957;
+    --btn-color: #ffffff;
+    --transition-btn: background 250ms ease-in-out;
+    --transition-checkbox: all 100ms linear;
+    --outline: 3px solid #11b98175;
+    --outline-offset: 3px;
+}
+
+:root.dark-mode {
+    --primary-barkground: #1f2937;
+    --secondary-background: #edfdf5;
+    --primary-color: #f9fafb;
+    --secondary-color: #4bdf86;
+    --divider-background: #6b7280;
+    --outline: 3px solid #4bdf8675;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Karla", sans-serif;
+    color: var(--primary-color);
+    background: var(--primary-barkground);
+    margin: 0;
+    padding: 50px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+p {
+    font-weight: 300;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid var(--divider-background);
+    margin: 35px 0;
+    padding: 0;
+}
+
+i {
+    pointer-events: none;
+}
+
+button:focus,
+input:focus {
+    outline: var(--outline);
+    outline-offset: var(--outline-offset);
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: var(--outline);
+    outline-offset: var(--outline-offset);
+}
+
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.btn {
+    font-family: "Karla", sans-serif;
+    font-weight: 500;
+    color: var(--btn-color);
+    background: var(--btn-background);    
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    transition: var(--transition-btn);
+}
+
+.btn:hover {
+    background: var(--btn-background-hover);
+}
+
+.theme-container {
+    position: absolute;
+    font-size: 20px;
+    top: 20px;
+    right: 20px;
+}
+
+.theme-btn {
+    color: var(--primary-color);
+    background: transparent;
+    border: none;
+    border-radius: 6px;    
+}
+
+.title {
+    font-size: 40px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.title-segment {
+    display: block;
+    color: var(--secondary-color);    
+}
+
+.description {
+    font-size: 20px;
+    margin: 10px 0 50px;
+}
+
+.range-input-container {
+    margin-bottom: 15px;
+}
+
+.range-description {
+    margin: 0 0 10px;
+}
+
+.range-input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    max-width: 350px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.range-input:focus {
+    outline: none;
+}
+
+/* Source: https://www.smashingmagazine.com/2021/12/create-custom-range-input-consistent-browsers/ */
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+.range-input::-webkit-slider-runnable-track {
+    height: 4px;
+    background: var(--secondary-background);
+    border-radius: 4px;
+}
+
+/***** Firefox *****/
+.range-input::-moz-range-track {
+    height: 4px;
+    background: var(--secondary-background);
+    border-radius: 4px;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+.range-input::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 20px;    
+    height: 20px;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    margin-top: -8px; /* Centers thumb on the track */
+}
+
+.range-input:focus::-webkit-slider-thumb {
+    outline: var(--outline);
+    outline-offset: var(--outline-offset);
+}
+
+/***** Firefox *****/
+.range-input::-moz-range-thumb {
+    width: 16px;    
+    height: 16px;
+    background-color: var(--secondary-color);
+    border: none; /* Removes extra border that FF applies */
+    border-radius: 50%;
+}
+
+.range-input:focus::-moz-range-thumb {
+    outline: var(--outline);
+    outline-offset: var(--outline-offset);
+}
+
+.checkbox-inputs-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 35px;
+}
+
+/* Source: https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/ */
+.custom-checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.00001;
+    z-index: 1;
+}
+
+.custom-checkbox svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border-radius: 6px;    
+}
+
+.custom-checkbox svg * {
+    transition: var(--transition-checkbox);    
+}
+
+.custom-checkbox input:checked + svg .custom-checkbox-background {
+    fill: var(--secondary-background);
+    stroke: var(--secondary-background);
+}
+
+.custom-checkbox input:checked + svg .custom-checkbox-checkmark {
+    stroke: var(--primary-barkground);    
+}
+
+.custom-checkbox input:focus + svg {
+    outline: var(--outline);
+    outline-offset: var(--outline-offset);
+}
+
+.custom-checkbox input:focus:not(:focus-visible) + svg {
+    outline: none;
+}
+
+.result-container {
+    display: flex;
+    gap: 10px
+}
+
+.result {
+    display: inline-block;
+    height: 35px;
+    min-width: 175px;
+    font-weight: 500;
+    text-align: center;
+    color: #5def92;
+    background: #273549;
+    border-radius: 6px;
+    padding: 8px 16px;
+}
+
+.u-hidden {
+    visibility: hidden;
+}
+
+.u-display-none {
+    display: none;
+}

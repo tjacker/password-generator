@@ -1,0 +1,73 @@
+<html>
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body >
+        <main>
+            <div class="theme-container">
+                <button id="theme-btn" class="theme-btn" type="button" title="Switch theme" aria-label="Switch theme">
+                    <i id="theme-icon" class="fa-solid fa-moon fa-fw"></i>
+                </button>
+            </div>
+            <div>
+                <h1 class="title">Generate a <span class="title-segment">random password</span></h1>
+                <p class="description">Never use an insecure password again.</p>
+                <div>
+                    <div class="range-input-container">
+                        <p id="range-description" class="range-description">Character Length: <span id="range-input-display"></span></p>
+                        <input type="range" id="range-input" class="range-input" name="range-input" min="8" max="32" value="16" aria-labelledby="range-description"/>
+                    </div>
+                    <div class="checkbox-inputs-container">
+                        <div>
+                            <label for="uppercase-letters-input" class="custom-checkbox">
+                                <input type="checkbox" id="uppercase-letters-input" name="uppercase-letters-input" aria-label="Include uppercase letters" checked />
+                                <svg width="32" height="32" viewBox="-4 -4 39 39" aria-hidden="true" focusable="false">
+                                    <!-- The background -->
+                                    <rect class="custom-checkbox-background" width="35" height="35" x="-2" y="-2" stroke="currentColor" fill="none" stroke-width="3" rx="6" ry="6"></rect>
+                                    <!-- The checkmark-->
+                                    <polyline class="custom-checkbox-checkmark" points="4,14 12,23 28,5" stroke="transparent" stroke-width="4" fill="none"></polyline>
+                                </svg>
+                                <span>A-Z</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="numbers-input" class="custom-checkbox">
+                                <input type="checkbox" id="numbers-input" name="numbers-input" aria-label="Include numbers" checked />
+                                <svg width="32" height="32" viewBox="-4 -4 39 39" aria-hidden="true" focusable="false">
+                                    <!-- The background -->
+                                    <rect class="custom-checkbox-background" width="35" height="35" x="-2" y="-2" stroke="currentColor" fill="none" stroke-width="3" rx="6" ry="6"></rect>
+                                    <!-- The checkmark-->
+                                    <polyline class="custom-checkbox-checkmark" points="4,14 12,23 28,5" stroke="transparent" stroke-width="4" fill="none"></polyline>
+                                </svg>
+                                <span>0-9</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="symbols-input" class="custom-checkbox">
+                                <input type="checkbox" id="symbols-input" name="symbols-input" aria-label="Include symbols" checked />
+                                <svg width="32" height="32" viewBox="-4 -4 39 39" aria-hidden="true" focusable="false">
+                                    <!-- The background -->
+                                    <rect class="custom-checkbox-background" width="35" height="35" x="-2" y="-2" stroke="currentColor" fill="none" stroke-width="3" rx="6" ry="6"></rect>
+                                    <!-- The checkmark-->
+                                    <polyline class="custom-checkbox-checkmark" points="4,14 12,23 28,5" stroke="transparent" stroke-width="4" fill="none"></polyline>
+                                </svg>
+                                <span>!@#</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button id="password-btn" class="btn btn" type="button" >Generate Password</button>
+            </div>
+            <hr />
+            <div class="result-container u-hidden">
+                <span id="password-result" class="result"></span>
+                <button id="copy-btn" class="btn copy-btn" type="button" title="Copy to clipboard" aria-label="Copy to clipboard"><i class="fa-solid fa-copy"></i></button>            
+            </div>
+        </main>
+        <script src="index.js"></script>
+    </body>
+</html>
