@@ -27,7 +27,7 @@
 }
 
 body {
-  font-family: "Karla", sans-serif;
+  font-family: 'Karla', sans-serif;
   color: var(--primary-color);
   background: var(--primary-background);
   margin: 0;
@@ -74,7 +74,7 @@ input:focus:not(:focus-visible) {
 }
 
 .btn {
-  font-family: "Karla", sans-serif;
+  font-family: 'Karla', sans-serif;
   font-weight: 500;
   color: var(--btn-color);
   background: var(--btn-background);
