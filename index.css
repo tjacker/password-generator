@@ -31,7 +31,13 @@ body {
   color: var(--primary-color);
   background: var(--primary-background);
   margin: 0;
-  padding: 50px;
+  padding: 50px 25px;
+}
+
+@media screen and (min-width: 512px) {
+  body {
+    padding: 50px;
+  }
 }
 
 main {
@@ -240,15 +246,19 @@ input:focus:not(:focus-visible) {
 
 .result-container {
   display: flex;
+  flex-direction: column;
+  align-items: start;
   gap: 10px;
 }
 
 .result {
   display: inline-block;
-  height: 35px;
-  min-width: 175px;
+  max-width: 100%;
   font-weight: 500;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: #5def92;
   background: #273549;
   border-radius: 6px;
