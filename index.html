@@ -87,8 +87,11 @@
         <hr />
         <div class="result-container u-hidden">
             <span id="password-result" class="result"></span>
-            <button id="copy-btn" class="btn copy-btn" type="button" title="Copy to clipboard"
-                aria-label="Copy to clipboard"><i class="fa-solid fa-copy"></i></button>
+            <div id="copy-btn-container" class="copy-btn-container">
+                <button id="copy-btn" class="btn copy-btn" type="button" title="Copy to clipboard"
+                    aria-label="Copy to clipboard"><i class="fa-solid fa-copy"></i></button>
+                <div role="alert" id="copy-message" class="copy-message u-hidden"></div>
+            </div>
         </div>
     </main>
     <script src="index.js"></script>

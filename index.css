@@ -1,16 +1,21 @@
 :root {
   --primary-background: #edfdf5;
   --secondary-background: #1f2937;
+  --result-background: #273549;
   --primary-color: #111827;
   --secondary-color: #11b981;
+  --result-color: #5def92;
   --divider-background: #d1d5db;
   --btn-background: #029669;
   --btn-background-hover: #057957;
   --btn-color: #ffffff;
-  --transition-btn: background 250ms ease-in-out;
-  --transition-checkbox: all 100ms linear;
+  --content-spacing: 8px 16px;
+  --border-radius: 6px;
   --outline: 3px solid #11b98175;
   --outline-offset: 3px;
+  --transition-btn: background 250ms ease-in-out;
+  --transition-checkbox: all 100ms linear;
+  --transition-message: opacity 250ms ease-out;
 }
 
 :root.dark-mode {
@@ -85,8 +90,8 @@ input:focus:not(:focus-visible) {
   color: var(--btn-color);
   background: var(--btn-background);
   border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
+  border-radius: var(--border-radius);
+  padding: var(--content-spacing);
   transition: var(--transition-btn);
 }
 
@@ -105,7 +110,7 @@ input:focus:not(:focus-visible) {
   color: var(--primary-color);
   background: transparent;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
 }
 
 .title {
@@ -219,7 +224,7 @@ input:focus:not(:focus-visible) {
   width: 20px;
   height: 20px;
   margin-right: 8px;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
 }
 
 .custom-checkbox svg * {
@@ -244,13 +249,6 @@ input:focus:not(:focus-visible) {
   outline: none;
 }
 
-.result-container {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 10px;
-}
-
 .result {
   display: inline-block;
   max-width: 100%;
@@ -259,14 +257,30 @@ input:focus:not(:focus-visible) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: #5def92;
-  background: #273549;
-  border-radius: 6px;
-  padding: 8px 16px;
+  color: var(--result-color);
+  background: var(--result-background);
+  border-radius: var(--border-radius);
+  padding: var(--content-spacing);
+}
+
+.copy-btn-container {
+  margin-top: 10px;
+}
+
+.copy-message {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  color: var(--result-color);
+  background: var(--result-background);
+  opacity: 1;
+  border-radius: var(--border-radius);
+  padding: var(--content-spacing);
+  transition: var(--transition-message);
 }
 
 .u-hidden {
-  visibility: hidden;
+  opacity: 0;
 }
 
 .u-display-none {

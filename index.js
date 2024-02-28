@@ -18,6 +18,7 @@
   const passwordBtn = document.getElementById('password-btn');
   const passwordResult = document.getElementById('password-result');
   const copyBtn = document.getElementById('copy-btn');
+  const copyBtnMessage = document.getElementById('copy-message');
   let passwordLength = 0;
 
   themeBtn.addEventListener('click', (event) => {
@@ -48,6 +49,27 @@
     passwordResult.parentElement.classList.remove('u-hidden');
   });
 
+  copyBtn.addEventListener('click', async () => {
+    let copiedSuccessfully = true;
+
+    try {
+      await navigator.clipboard.writeText(passwordResult.textContent);
+    } catch (error) {
+      console.error('Error trying to use navigator.clipboard.writeText()', error);
+      copiedSuccessfully = false;
+    }
+
+    if (copiedSuccessfully) {
+      showCopiedMessage('Copied to clipboard');
+    } else {
+      showCopiedMessage('Error copying to clipboard');
+    }
+
+    setTimeout(() => {
+      hideCopiedMessage();
+    }, 1500);
+  });
+
   function updatePasswordLength() {
     const rangeInputValue = rangeInput.value;
 
@@ -71,22 +93,18 @@
     return characters;
   }
 
-  async function getClipboardPermission() {
-    try {
-      const permission = await navigator.permissions.query({ name: 'clipboard-write' });
+  function showCopiedMessage(message) {
+    copyBtnMessage.textContent = message;
+    copyBtnMessage.classList.remove('u-hidden');
+  }
 
-      if (permission.state === 'granted' || permission.state === 'prompt') {
-        copyBtn.addEventListener('click', () => {
-          navigator.clipboard.writeText(passwordResult.textContent);
-        });
-      } else {
-        copyBtn.classList.add('u-display-none');
-      }
-    } catch (err) {
-      console.error('Error checking clipboard permission:', err);
-    }
+  function hideCopiedMessage() {
+    copyBtnMessage.classList.add('u-hidden');
+    // Allow fading animation to complete before removing text.
+    setTimeout(() => {
+      copyBtnMessage.textContent = '';
+    }, 300);
   }
 
   updatePasswordLength();
-  getClipboardPermission();
 })();
