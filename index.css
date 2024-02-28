@@ -119,11 +119,11 @@ input:focus:not(:focus-visible) {
 }
 
 .range-input-container {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .range-description {
-  margin: 0 0 10px;
+  margin: 0 0 20px;
 }
 
 .range-input {
