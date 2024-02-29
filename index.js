@@ -19,7 +19,6 @@
   const passwordResult = document.getElementById('password-result');
   const copyBtn = document.getElementById('copy-btn');
   const copyBtnMessage = document.getElementById('copy-message');
-  let passwordLength = 0;
 
   themeBtn.addEventListener('click', (event) => {
     if (themeIcon.classList.contains('fa-moon')) {
@@ -33,15 +32,15 @@
     }
   });
 
-  rangeInput.addEventListener('input', () => {
-    updatePasswordLength();
+  rangeInput.addEventListener('input', (event) => {
+    updatePasswordLengthDisplay();
   });
 
   passwordBtn.addEventListener('click', () => {
     const characters = getCharacterSet();
     let password = '';
 
-    for (let i = 1; i <= passwordLength; i++) {
+    for (let i = 1; i <= Number(rangeInput.value); i++) {
       password += characters[Math.floor(Math.random() * characters.length)];
     }
 
@@ -70,11 +69,35 @@
     }, 1500);
   });
 
-  function updatePasswordLength() {
-    const rangeInputValue = rangeInput.value;
+  document.onvisibilitychange = () => {
+    if (document.visibilityState === 'hidden') {
+      localStorage.setItem(
+        'userSettings',
+        JSON.stringify({
+          passwordLength: rangeInput.value,
+          uppercaseLetters: uppercaseLettersInput.checked,
+          numbers: numbersInput.checked,
+          symbols: symbolsInput.checked,
+        })
+      );
+    }
+  };
 
-    passwordLength = Number(rangeInputValue);
-    rangeInputDisplay.textContent = rangeInputValue;
+  function getInitialUserSettingsState() {
+    const localStorageUserSettings = JSON.parse(localStorage.getItem('userSettings'));
+
+    if (localStorageUserSettings != null) {
+      rangeInput.value = localStorageUserSettings.passwordLength;
+      uppercaseLettersInput.checked = localStorageUserSettings.uppercaseLetters;
+      numbersInput.checked = localStorageUserSettings.numbers;
+      symbolsInput.checked = localStorageUserSettings.symbols;
+    }
+
+    updatePasswordLengthDisplay();
+  }
+
+  function updatePasswordLengthDisplay() {
+    rangeInputDisplay.textContent = rangeInput.value;
   }
 
   function getCharacterSet() {
@@ -106,5 +129,5 @@
     }, 300);
   }
 
-  updatePasswordLength();
+  getInitialUserSettingsState();
 })();
