@@ -19,16 +19,13 @@
   const passwordResult = document.getElementById('password-result');
   const copyBtn = document.getElementById('copy-btn');
   const copyBtnMessage = document.getElementById('copy-message');
+  let themePreference = 'light';
 
   themeBtn.addEventListener('click', () => {
     if (themeIcon.classList.contains('fa-moon')) {
-      themeIcon.classList.remove('fa-moon');
-      themeIcon.classList.add('fa-sun');
-      htmlEl.classList.add('dark-mode');
+      updateTheme('dark');
     } else {
-      themeIcon.classList.remove('fa-sun');
-      themeIcon.classList.add('fa-moon');
-      htmlEl.classList.remove('dark-mode');
+      updateTheme('light');
     }
   });
 
@@ -74,6 +71,7 @@
       localStorage.setItem(
         'userSettings',
         JSON.stringify({
+          theme: themePreference,
           passwordLength: rangeInput.value,
           uppercaseLetters: uppercaseLettersInput.checked,
           numbers: numbersInput.checked,
@@ -91,9 +89,28 @@
       uppercaseLettersInput.checked = localStorageUserSettings.uppercaseLetters;
       numbersInput.checked = localStorageUserSettings.numbers;
       symbolsInput.checked = localStorageUserSettings.symbols;
+
+      // Light theme is the default preference
+      if (localStorageUserSettings.theme === 'dark') {
+        updateTheme('dark');
+      }
     }
 
     updatePasswordLengthDisplay();
+  }
+
+  function updateTheme(preference) {
+    if (preference === 'dark') {
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+      htmlEl.classList.add('dark-mode');
+      themePreference = 'dark';
+    } else {
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+      htmlEl.classList.remove('dark-mode');
+      themePreference = 'light';
+    }
   }
 
   function updatePasswordLengthDisplay() {
