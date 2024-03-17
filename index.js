@@ -20,7 +20,7 @@
   const copyBtn = document.getElementById('copy-btn');
   const copyBtnMessage = document.getElementById('copy-message');
 
-  themeBtn.addEventListener('click', (event) => {
+  themeBtn.addEventListener('click', () => {
     if (themeIcon.classList.contains('fa-moon')) {
       themeIcon.classList.remove('fa-moon');
       themeIcon.classList.add('fa-sun');
@@ -32,7 +32,7 @@
     }
   });
 
-  rangeInput.addEventListener('input', (event) => {
+  rangeInput.addEventListener('input', () => {
     updatePasswordLengthDisplay();
   });
 
